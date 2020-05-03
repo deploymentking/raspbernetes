@@ -5,7 +5,20 @@
   vars_files:
     - vars.yml
 
+  pre_tasks:
+    - name: 'apt update/upgrade/install/clean'
+      raw: apt-get update && \
+           apt-get -y upgrade && \
+           apt-get -y install sshpass && \
+           apt -y autoremove
+
   tasks:
+    - name: Set authorized key taken from file
+      authorized_key:
+        user: ubuntu
+        state: present
+        key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/raspbernetes_rsa.pub') }}"
+
     - name: Set the current MAC address for eth0.
       set_fact:
         r10s_mac_address: "{{ hostvars[inventory_hostname].ansible_default_ipv4.macaddress }}"
