@@ -1,0 +1,20 @@
+---
+# Mapping of what hardware MAC addresses should be configured with specific IPs.
+mac_address_mapping:
+  "dc:a6:32:51:4f:d5":
+    name: k8s-master
+    ip: "192.169.0.80"
+  "dc:a6:32:4b:5a:d6":
+    name: k8s-worker0
+    ip: "192.169.0.90"
+  "dc:a6:32:51:4f:f4":
+    name: k8s-worker1
+    ip: "192.169.0.91"
+  "dc:a6:32:51:50:c0":
+    name: k8s-worker2
+    ip: "192.169.0.92"
+
+# Nameservers to use in resolv.conf.
+dns_nameservers:
+  - "1.1.1.1"
+  - "1.0.0.1"
