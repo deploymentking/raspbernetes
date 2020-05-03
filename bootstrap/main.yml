@@ -1,5 +1,5 @@
 ---
-- hosts: raspbernetes
+- hosts: raspbernetes_master:raspbernetes_workers
   become: yes
 
   vars_files:
@@ -22,20 +22,20 @@
     - name: Set the current MAC address for eth0.
       set_fact:
         r10s_mac_address: "{{ hostvars[inventory_hostname].ansible_default_ipv4.macaddress }}"
-#
-#    - name: Set variables based on eth0 MAC address.
-#      set_fact:
-#        r10s_hostname: "{{ mac_address_mapping[r10s_mac_address].name }}"
-#        r10s_ip_address: "{{ mac_address_mapping[r10s_mac_address].ip }}"
-#
-#    - name: Set up networking-related files.
-#      template:
-#        src: "templates/{{ item.template }}"
-#        dest: "{{ item.dest }}"
-#        mode: 0644
-#      with_items:
+
+    - name: Set variables based on eth0 MAC address.
+      set_fact:
+        r10s_hostname: "{{ mac_address_mapping[r10s_mac_address].name }}"
+        r10s_ip_address: "{{ mac_address_mapping[r10s_mac_address].ip }}"
+
+    - name: Set up networking-related files.
+      template:
+        src: "templates/{{ item.template }}"
+        dest: "{{ item.dest }}"
+        mode: 0644
+      with_items:
+        - { template: hosts.j2, dest: /etc/hosts }
 #        - { template: hostname.j2, dest: /etc/hostname }
-#        - { template: hosts.j2, dest: /etc/hosts }
 #        - { template: resolv.conf.j2, dest: /etc/resolv.conf }
 #        - { template: dhcpcd.conf.j2, dest: /etc/dhcpcd.conf }
 #      notify:
