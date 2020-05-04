@@ -9,7 +9,7 @@
     - name: 'apt update/upgrade/install/clean'
       raw: apt-get update && \
            apt-get -y upgrade && \
-           apt-get -y install sshpass && \
+           apt-get -y install sshpass net-tools && \
            apt -y autoremove
 
   tasks:
@@ -35,21 +35,44 @@
         mode: 0644
       with_items:
         - { template: hosts.j2, dest: /etc/hosts }
-#        - { template: hostname.j2, dest: /etc/hostname }
-#        - { template: resolv.conf.j2, dest: /etc/resolv.conf }
-#        - { template: dhcpcd.conf.j2, dest: /etc/dhcpcd.conf }
-#      notify:
-#        - update hostname
-#        - delete dhcp leases
-#
-#  handlers:
-#    - name: update hostname
-#      command: "hostname {{ r10s_hostname }}"
-#
-#    - name: delete dhcp leases
-#      file:
-#        path: /var/lib/dhcp/dhclient.leases
-#        state: absent
-#      with_items:
-#        - /var/lib/dhcp/dhclient.leases
-#        - /var/lib/dhcpcd5/dhcpcd-eth0.lease
+        - { template: hostname.j2, dest: /etc/hostname }
+        - { template: resolv.conf.j2, dest: /etc/resolv.conf }
+      notify:
+        - update hostname
+        - delete dhcp leases
+
+    - name: Disable cloud-init's network configuration capabilities
+      copy:
+        src: files/99-disable-network-config.cfg
+        dest: /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
+
+#  roles:
+#    - role: mrlesmithjr.netplan
+#      become: yes
+#      netplan_enabled: true
+#      netplan_renderer: networkd
+#      netplan_configuration:
+#        network:
+#          version: 2
+#          ethernets:
+#            eth0:
+#              dhcp4: true
+#              optional: true
+#              addresses:
+#                - "{{ mac_address_mapping[r10s_mac_address].ip }}/24"
+#              nameservers:
+#                addresses:
+#                  - 1.1.1.1
+#                  - 8.8.8.8
+
+  handlers:
+    - name: update hostname
+      command: "hostname {{ r10s_hostname }}"
+
+    - name: delete dhcp leases
+      file:
+        path: /var/lib/dhcp/dhclient.leases
+        state: absent
+      with_items:
+        - /var/lib/dhcp/dhclient.leases
+        - /var/lib/dhcpcd5/dhcpcd-eth0.lease
