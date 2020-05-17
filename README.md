@@ -2,4 +2,5 @@
 
 Management for bare metal Raspberry Pi cluster running k8s
 
-![Python package](https://github.com/deploymentking/raspbernetes/workflows/Python%20package/badge.svg)
+![Ansible Lint](https://github.com/deploymentking/raspbernetes/workflows/Ansible%20Lint/badge.svg)
+![Repo Healthcheck](https://github.com/deploymentking/raspbernetes/workflows/Repo%20Healthcheck/badge.svg)
