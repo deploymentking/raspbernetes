@@ -7,7 +7,7 @@ readme = "README.md"
 license = "MIT"
 
 [tool.poetry.dependencies]
-ansible = "2.9.7"
+ansible = "2.9.9"
 python = "^3.8"
 pyyaml = "*"
 
