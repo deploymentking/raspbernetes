@@ -40,5 +40,19 @@ setup: check_poetry ## Setup virtualenv & dependencies using Poetry
 .PHONY: setup
 
 bootstrap: setup ## Run Ansible against inventory in bootstrap folder
-	ansible-playbook -i bootstrap/inventory --become --ask-pass bootstrap/main.yml
+	ansible-playbook -i bootstrap/inventory --become --ask-pass --connection paramiko bootstrap/main.yml
 .PHONY: bootstrap
+
+healthcheck: ## Check host health
+	ansible all --module-name ping --inventory bootstrap/inventory --private-key ~/.ssh/raspbernetes_rsa
+	ansible all --args "df -h" --inventory bootstrap/inventory --private-key ~/.ssh/raspbernetes_rsa
+	ansible all --args "free -m" --inventory bootstrap/inventory --private-key ~/.ssh/raspbernetes_rsa
+.PHONY: healthcheck
+
+reboot: ## Check host health
+	ansible all --module-name shell -a "sleep 1s; shutdown -r now" --become --background 60 --poll 0 --inventory bootstrap/inventory --private-key ~/.ssh/raspbernetes_rsa
+.PHONY: healthcheck
+
+shutdown: ## Check host health
+	ansible all --module-name shell -a "sleep 1s; shutdown -h now" --become --background 60 --poll 0 --inventory bootstrap/inventory --private-key ~/.ssh/raspbernetes_rsa
+.PHONY: healthcheck

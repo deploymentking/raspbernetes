@@ -1,8 +1,13 @@
-[raspbernetes]
+[raspbernetes_master]
 192.168.0.80
+
+[raspbernetes_workers]
 192.168.0.90
 192.168.0.91
 192.168.0.92
 
-[raspbernetes:vars]
+[raspbernetes_master:vars]
+ansible_ssh_user=ubuntu
+
+[raspbernetes_workers:vars]
 ansible_ssh_user=ubuntu
