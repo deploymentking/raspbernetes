@@ -39,7 +39,7 @@ setup: check_poetry ## Setup virtualenv & dependencies using Poetry
 .PHONY: setup
 
 bootstrap: setup ## Run Ansible against inventory in bootstrap folder
-	ansible-playbook -i bootstrap/inventory --become --ask-pass --connection paramiko bootstrap/main.yml
+	cd ./ansible/playbooks/bootstrap/ && ansible-playbook -i inventories/raspberry_pi/hosts site.yml
 .PHONY: bootstrap
 
 healthcheck: ## Check host health
