@@ -1,0 +1,34 @@
+---
+- name: Boostrap the cluster
+  hosts: raspbernetes_master:raspbernetes_workers
+  vars:
+    ansible_connection: paramiko
+    ansible_password: !vault |
+      $ANSIBLE_VAULT;1.1;AES256
+      62666665313164376535393933613233613438393165633365326137636138393232633830333536
+      6537326566386630316235336264333337626330616636660a383433623961383038663838353439
+      36373034366563666430383536396236306366366139353665373433663561343561333165643933
+      6635653537636538610a613066393838646136373831653435323765643562623461386164366335
+      3338
+  become: true
+  pre_tasks:
+    - name: 'apt update/upgrade/install/clean'
+      raw: apt-get update && apt-get -y upgrade && apt-get -y install sshpass net-tools && apt -y autoremove
+  roles:
+    - role: bootstrap
+    - role: mrlesmithjr.netplan
+      netplan_enabled: true
+      netplan_renderer: networkd
+      netplan_configuration:
+        network:
+          version: 2
+          ethernets:
+            eth0:
+              dhcp4: true
+              optional: true
+              addresses:
+                - "{{ mac_address_mapping[r10s_mac_address].ip }}/24"
+              nameservers:
+                addresses:
+                  - 1.1.1.1
+                  - 8.8.8.8
