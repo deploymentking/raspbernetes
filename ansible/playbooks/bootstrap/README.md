@@ -4,10 +4,12 @@
 
 <!-- toc -->
 
+- [Run playbook](#run-playbook)
+- [References](#references)
 
 <!-- tocstop -->
 
-### Run playbook
+## Run playbook
 
 To install the playbook dependencies, run the following command
 
