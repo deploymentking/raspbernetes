@@ -43,15 +43,15 @@ bootstrap: setup ## Run Ansible against inventory in bootstrap folder
 .PHONY: bootstrap
 
 healthcheck: ## Check host health
-	ansible all --module-name ping --inventory bootstrap/inventory --private-key ~/.ssh/raspbernetes_rsa
-	ansible all --args "df -h" --inventory bootstrap/inventory --private-key ~/.ssh/raspbernetes_rsa
-	ansible all --args "free -m" --inventory bootstrap/inventory --private-key ~/.ssh/raspbernetes_rsa
+	ansible all --module-name ping --inventory ./ansible/playbooks/bootstrap/inventories/raspberry_pi/hosts --private-key ~/.ssh/raspbernetes_rsa
+	ansible all --args "df -h" --inventory ./ansible/playbooks/bootstrap/inventories/raspberry_pi/hosts --private-key ~/.ssh/raspbernetes_rsa
+	ansible all --args "free -m" --inventory ./ansible/playbooks/bootstrap/inventories/raspberry_pi/hosts --private-key ~/.ssh/raspbernetes_rsa
 .PHONY: healthcheck
 
 reboot: ## Check host health
-	ansible all --module-name shell -a "sleep 1s; shutdown -r now" --become --background 60 --poll 0 --inventory bootstrap/inventory --private-key ~/.ssh/raspbernetes_rsa
+	ansible all --module-name shell -a "sleep 1s; shutdown -r now" --become --background 60 --poll 0 --inventory ./ansible/playbooks/bootstrap/inventories/raspberry_pi/hosts --private-key ~/.ssh/raspbernetes_rsa
 .PHONY: healthcheck
 
 shutdown: ## Check host health
-	ansible all --module-name shell -a "sleep 1s; shutdown -h now" --become --background 60 --poll 0 --inventory bootstrap/inventory --private-key ~/.ssh/raspbernetes_rsa
+	ansible all --module-name shell -a "sleep 1s; shutdown -h now" --become --background 60 --poll 0 --inventory ./ansible/playbooks/bootstrap/inventories/raspberry_pi/hosts --private-key ~/.ssh/raspbernetes_rsa
 .PHONY: healthcheck
