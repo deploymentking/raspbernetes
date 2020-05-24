@@ -1,0 +1,6 @@
+---
+- name: Set authorized key taken from file
+  authorized_key:
+    user: ubuntu
+    state: present
+    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/raspbernetes_rsa.pub') }}"

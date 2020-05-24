@@ -1,0 +1,28 @@
+---
+- name: Get device name
+  set_fact:
+    device_name: "{{ ansible_devices.sda.model }}"
+
+- name: Show only device name
+  debug: var=device_name
+
+- name: Create a ext4 filesystem on device
+  filesystem:
+    fstype: ext4
+    dev: "{{ mount_device }}"
+    force: yes
+    resizefs: yes
+
+- name: Create a directory if it does not exist
+  file:
+    path: "{{ mount_point_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Mount up USB device
+  mount:
+    path: "{{ mount_point_dir }}"
+    src: "{{ mount_device }}"
+    fstype: ext4
+    state: mounted
+    backup: yes
