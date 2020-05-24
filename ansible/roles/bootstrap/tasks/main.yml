@@ -16,3 +16,6 @@
 
 - name: Setup USB
   include: setup_usb.yml
+
+- name: Setup swap file
+  include: setup_swap.yml
