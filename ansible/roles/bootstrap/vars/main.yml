@@ -18,3 +18,6 @@ mac_address_mapping:
 dns_nameservers:
   - "1.1.1.1"
   - "1.0.0.1"
+
+mount_device: "/dev/sda1"
+mount_point_dir: "/mnt/sandisk"

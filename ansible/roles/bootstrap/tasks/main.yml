@@ -13,3 +13,6 @@
 
 - name: Setup Network
   include: setup_network.yml
+
+- name: Setup USB
+  include: setup_usb.yml
