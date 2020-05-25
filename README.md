@@ -16,4 +16,4 @@ Management for bare metal Raspberry Pi cluster running k8s
 ## Bootstrap a cluster
 
 Follow the instructions below to bootstrap a cluster using Ansible
-[Bootstrap instructions](./ansible/playbooks/bootstrap/README.md)
+* [Bootstrap instructions](./ansible/playbooks/bootstrap/README.md)

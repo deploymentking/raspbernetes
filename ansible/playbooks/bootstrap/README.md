@@ -47,11 +47,11 @@ umount -l /dev/sda1
 ## References
 
 ### fstab settings
-[How fstab works](https://linuxconfig.org/how-fstab-works-introduction-to-the-etc-fstab-file-on-linux)
-[Ansible file module](https://docs.ansible.com/ansible/latest/modules/file_module.html)
-[Ansible mount module](https://docs.ansible.com/ansible/latest/modules/mount_module.html#mount-module)
+* [How fstab works](https://linuxconfig.org/how-fstab-works-introduction-to-the-etc-fstab-file-on-linux)
+* [Ansible file module](https://docs.ansible.com/ansible/latest/modules/file_module.html)
+* [Ansible mount module](https://docs.ansible.com/ansible/latest/modules/mount_module.html#mount-module)
 
 ### Swap settings
-[Jeff Geerling](https://github.com/geerlingguy/ansible-role-swap/blob/master/tasks/enable.yml)
-[Roberto Rojas](https://github.com/robertojrojas/kubernetes-the-hard-way-raspberry-pi/blob/master/docs/01-infrastructure.md#swap-optional)
-[Enable swap on Ubuntu](https://tecadmin.net/enable-swap-on-ubuntu/)
+* [Jeff Geerling](https://github.com/geerlingguy/ansible-role-swap/blob/master/tasks/enable.yml)
+* [Roberto Rojas](https://github.com/robertojrojas/kubernetes-the-hard-way-raspberry-pi/blob/master/docs/01-infrastructure.md#swap-optional)
+* [Enable swap on Ubuntu](https://tecadmin.net/enable-swap-on-ubuntu/)
