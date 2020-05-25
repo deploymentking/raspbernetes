@@ -9,3 +9,6 @@
   with_items:
     - /var/lib/dhcp/dhclient.leases
     - /var/lib/dhcpcd5/dhcpcd-eth0.lease
+
+- name: restart ssh
+  service: "name=ssh state=restarted"
