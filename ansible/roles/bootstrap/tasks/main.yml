@@ -8,12 +8,6 @@
     r10s_hostname: "{{ mac_address_mapping[r10s_mac_address].name }}"
     r10s_ip_address: "{{ mac_address_mapping[r10s_mac_address].ip }}"
 
-- name: Setup Users
-  include: setup_users.yml
-
-- name: Setup Security
-  include: setup_security.yml
-
 - name: Setup Network
   include: setup_network.yml
 

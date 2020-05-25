@@ -1,6 +1,0 @@
----
-- name: Add new users
-  user:
-    name: "{{ item }}"
-    shell: /bin/bash
-  with_items: "{{ security_users }}"
