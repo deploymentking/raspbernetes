@@ -1,0 +1,8 @@
+---
+- name: Secure the cluster
+  hosts: raspbernetes_master:raspbernetes_workers
+  become: true
+  vars_files:
+    - vars/ansible.yml
+  roles:
+    - role: security

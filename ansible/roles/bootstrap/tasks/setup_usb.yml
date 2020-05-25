@@ -13,13 +13,13 @@
     force: yes
     resizefs: yes
 
-- name: Create a directory if it does not exist
+- name: Create a mount point directory
   file:
     path: "{{ mount_point_dir }}"
     state: directory
     mode: '0755'
 
-- name: Mount up USB device
+- name: Mount USB device
   mount:
     path: "{{ mount_point_dir }}"
     src: "{{ mount_device }}"
