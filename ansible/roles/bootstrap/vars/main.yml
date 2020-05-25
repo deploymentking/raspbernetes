@@ -27,3 +27,6 @@ swap_file_size_mb: '512'
 swap_swappiness: '1'
 swap_file_state: present
 swap_file_create_command: "dd if=/dev/zero of={{ swap_file_path }} bs=1M count={{ swap_file_size_mb }}"
+
+users_names:
+  - raspbernetes
