@@ -1,0 +1,16 @@
+---
+netplan_enabled: true
+netplan_renderer: networkd
+netplan_configuration:
+  network:
+    version: 2
+    ethernets:
+      eth0:
+        dhcp4: true
+        optional: true
+        addresses:
+          - "{{ mac_address_mapping[r10s_mac_address].ip }}/24"
+        nameservers:
+          addresses:
+            - 1.1.1.1
+            - 8.8.8.8
