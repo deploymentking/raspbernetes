@@ -10,10 +10,29 @@ Management for bare metal Raspberry Pi cluster running k8s
 <!-- toc -->
 
 - [Bootstrap a cluster](#bootstrap-a-cluster)
+- [Setup cluster security](#setup-cluster-security)
 
 <!-- tocstop -->
 
 ## Bootstrap a cluster
 
-Follow the instructions below to bootstrap a cluster using Ansible
+Follow the instructions below to bootstrap a cluster using Ansible. This will setup a cluster via SSH port `22` and using
+the default `ubuntu` user with the password configured during the initial install.
+
 * [Bootstrap instructions](./ansible/playbooks/bootstrap/README.md)
+
+## Setup cluster security
+
+This playbook requires a "double-tap" in which the SSH port is changed from the default value of `22`. It will be
+necessary to amend the SSH port in the playbook vars file to 22 and then reset back to the custom value `2288`. To make
+connecting to the cluster easier, consider adding some SSH settings like below to your config file.
+
+```
+Host RASPBERNETES_GROUP
+  Host 192.168.0.*
+    User raspbernetes
+    Port 2288
+    IdentityFile /Users/username/.ssh/raspbernetes_rsa
+```
+
+* [Security instructions](./ansible/playbooks/security/README.md)
