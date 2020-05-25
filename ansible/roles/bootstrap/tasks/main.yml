@@ -11,8 +11,8 @@
 - name: Setup Users
   include: setup_users.yml
 
-- name: Setup SSH
-  include: setup_ssh.yml
+- name: Setup Security
+  include: setup_security.yml
 
 - name: Setup Network
   include: setup_network.yml

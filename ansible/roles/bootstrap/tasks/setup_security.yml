@@ -1,16 +1,16 @@
 ---
-- name: Set authorized key for ubuntu
+- name: Set authorized key for ubuntu.
   authorized_key:
     user: ubuntu
     state: present
     key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/raspbernetes_rsa.pub') }}"
 
-- name: Set authorized key for all users
+- name: Set authorized key for all users.
   authorized_key:
     user: "{{ item }}"
     state: present
     key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/raspbernetes_rsa.pub') }}"
-  with_items: "{{ users_names }}"
+  with_items: "{{ security_users }}"
 
 - name: Update SSH configuration to be more secure.
   lineinfile:
@@ -34,5 +34,31 @@
     line: '{{ item }} ALL=(ALL) NOPASSWD: ALL'
     state: present
     validate: 'visudo -cf %s'
-  with_items: "{{ users_names }}"
-  when: users_names | length > 0
+  with_items: "{{ security_users }}"
+  when: security_users | length > 0
+
+- name: Install security packages.
+  package: "name={{ item }} state=present"
+  with_items:
+    - fail2ban
+    - unattended-upgrades
+
+- name: Copy unattended-upgrades configuration templates in place.
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/apt/apt.conf.d/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - 50unattended-upgrades
+
+- name: Copy unattended-upgrades configuration files in place.
+  copy:
+    src: "files/{{ item }}"
+    dest: "/etc/apt/apt.conf.d/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - 10periodic

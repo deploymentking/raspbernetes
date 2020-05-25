@@ -3,4 +3,4 @@
   user:
     name: "{{ item }}"
     shell: /bin/bash
-  with_items: "{{ users_names }}"
+  with_items: "{{ security_users }}"

@@ -23,10 +23,15 @@ mount_device: "/dev/sda1"
 mount_point_dir: "/mnt/sandisk"
 
 swap_file_path: /swapfile
-swap_file_size_mb: '512'
-swap_swappiness: '1'
+swap_file_size_mb: "512"
+swap_swappiness: "1"
 swap_file_state: present
 swap_file_create_command: "dd if=/dev/zero of={{ swap_file_path }} bs=1M count={{ swap_file_size_mb }}"
 
-users_names:
+security_autoupdate_reboot: "false"
+security_autoupdate_reboot_time: "03:00"
+security_autoupdate_mail_to: "mail@thinkstack.io"
+security_autoupdate_mail_on_error: true
+security_autoupdate_blacklist: []
+security_users:
   - raspbernetes
