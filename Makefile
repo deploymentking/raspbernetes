@@ -42,6 +42,10 @@ bootstrap: setup ## Run Ansible against inventory in bootstrap folder
 	cd ./ansible/playbooks/bootstrap/ && ansible-playbook -i inventories/raspberry_pi/hosts site.yml
 .PHONY: bootstrap
 
+security: ## Run Ansible against inventory in security folder
+	cd ./ansible/playbooks/security/ && ansible-playbook -i inventories/raspberry_pi/hosts site.yml
+.PHONY: security
+
 healthcheck: ## Check host health
 	ansible all --module-name ping --inventory ./ansible/playbooks/bootstrap/inventories/raspberry_pi/hosts --private-key ~/.ssh/raspbernetes_rsa
 	ansible all --args "df -h" --inventory ./ansible/playbooks/bootstrap/inventories/raspberry_pi/hosts --private-key ~/.ssh/raspbernetes_rsa
