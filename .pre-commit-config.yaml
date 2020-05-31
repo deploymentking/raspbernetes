@@ -1,6 +1,6 @@
 repos:
   - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v2.3.0  # Use the ref you want to point at
+    rev: v3.1.0  # Use the ref you want to point at
     hooks:
       - id: no-commit-to-branch
       - id: check-case-conflict
