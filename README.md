@@ -9,10 +9,17 @@ Management for bare metal Raspberry Pi cluster running k8s
 
 <!-- toc -->
 
+- [Construct the cluster](#construct-the-cluster)
 - [Bootstrap a cluster](#bootstrap-a-cluster)
 - [Setup cluster security](#setup-cluster-security)
 
 <!-- tocstop -->
+
+## Construct the cluster
+
+The following bill of materials shows all the different components I used to put the cluster together.
+
+* [Bill of Materials](./docs/BOM.md)
 
 ## Bootstrap a cluster
 
