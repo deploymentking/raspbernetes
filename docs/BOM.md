@@ -24,3 +24,8 @@ here are some instructions on how to build the cluster
 ### Draw the rest of the owl
 
 ![Draw the rest of the owl](./images/02.png)
+
+### Don't forget good cable management
+
+![All plugged in](./images/03.png)
+![Final resting place](./images/04.png)
