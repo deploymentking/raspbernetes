@@ -23,7 +23,7 @@ Then run the full playbook, like this:
 
 ```bash
 cd ansible/playbooks/security
-ansible-playbook -i inventories/raspberry_pi/hosts site.yml
+ansible-playbook -i inventories/hosts site.yml
 ```
 
 ## Useful scripts

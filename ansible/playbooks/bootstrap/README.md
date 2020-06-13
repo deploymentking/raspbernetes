@@ -21,7 +21,7 @@ To install the playbook dependencies, run the following command
 
 Then run the full playbook, like this:
 
-`ansible-playbook -i inventories/raspberry_pi/hosts site.yml`
+`ansible-playbook -i inventories/hosts site.yml`
 
 ## Useful scripts
 

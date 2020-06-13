@@ -40,23 +40,23 @@ setup: check_poetry ## Setup virtualenv & dependencies using Poetry
 .PHONY: setup
 
 bootstrap: setup ## Run Ansible against inventory in bootstrap folder
-	cd ./ansible/playbooks/bootstrap/ && ansible-playbook -i inventories/raspberry_pi/hosts site.yml
+	cd ./ansible/playbooks/bootstrap/ && ansible-playbook site.yml
 .PHONY: bootstrap
 
 security: ## Run Ansible against inventory in security folder
-	cd ./ansible/playbooks/security/ && ansible-playbook -i inventories/raspberry_pi/hosts site.yml
+	cd ./ansible/playbooks/security/ && ansible-playbook site.yml
 .PHONY: security
 
 healthcheck: ## Check host health
-	ansible all --module-name ping --inventory ./ansible/playbooks/bootstrap/inventories/raspberry_pi/hosts --private-key ~/.ssh/raspbernetes_rsa
-	ansible all --args "df -h" --inventory ./ansible/playbooks/bootstrap/inventories/raspberry_pi/hosts --private-key ~/.ssh/raspbernetes_rsa
-	ansible all --args "free -m" --inventory ./ansible/playbooks/bootstrap/inventories/raspberry_pi/hosts --private-key ~/.ssh/raspbernetes_rsa
+	ansible all --module-name ping --inventory ./ansible/playbooks/bootstrap/inventories/hosts --private-key ~/.ssh/raspbernetes_rsa
+	ansible all --args "df -h" --inventory ./ansible/playbooks/bootstrap/inventories/hosts --private-key ~/.ssh/raspbernetes_rsa
+	ansible all --args "free -m" --inventory ./ansible/playbooks/bootstrap/inventories/hosts --private-key ~/.ssh/raspbernetes_rsa
 .PHONY: healthcheck
 
 reboot: ## Check host health
-	ansible all --module-name shell -a "sleep 1s; shutdown -r now" --become --background 60 --poll 0 --inventory ./ansible/playbooks/bootstrap/inventories/raspberry_pi/hosts --private-key ~/.ssh/raspbernetes_rsa
+	ansible all --module-name shell -a "sleep 1s; shutdown -r now" --become --background 60 --poll 0 --inventory ./ansible/playbooks/bootstrap/inventories/hosts --private-key ~/.ssh/raspbernetes_rsa
 .PHONY: healthcheck
 
 shutdown: ## Check host health
-	ansible all --module-name shell -a "sleep 1s; shutdown -h now" --become --background 60 --poll 0 --inventory ./ansible/playbooks/bootstrap/inventories/raspberry_pi/hosts --private-key ~/.ssh/raspbernetes_rsa
+	ansible all --module-name shell -a "sleep 1s; shutdown -h now" --become --background 60 --poll 0 --inventory ./ansible/playbooks/bootstrap/inventories/hosts --private-key ~/.ssh/raspbernetes_rsa
 .PHONY: healthcheck
