@@ -8,6 +8,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 ansible = "2.9.9"
+jinja2 = "^2.11"
 python = "^3.8"
 pyyaml = "*"
 

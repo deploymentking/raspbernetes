@@ -34,6 +34,7 @@ reset: ## Teardown tooling
 
 setup: check_poetry ## Setup virtualenv & dependencies using Poetry
 	export POETRY_VIRTUALENVS_IN_PROJECT=true && poetry run pip install --upgrade pip
+	poetry update
 	poetry install --no-root
 	python --version
 .PHONY: setup
