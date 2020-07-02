@@ -16,7 +16,7 @@ pyyaml = "*"
 [tool.poetry.dev-dependencies]
 bandit = "*"
 flake8 = "*"
-pre-commit = "^2.4.0"
+pre-commit = "^2.6.0"
 pytest = "^5.3.5"
 pytest-cov = "^2.9.0"
 pytest-pycodestyle = "^2.0.0"
