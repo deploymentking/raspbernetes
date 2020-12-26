@@ -1,28 +1,28 @@
 [tool.poetry]
 name = "raspbernetes"
-version = "0.1.0"
+version = "1.0.0"
 description = "Manage Kubernetes on a Raspberry Pi cluster"
 authors = ["Lee Myring <mail@thinkstack.io>"]
 readme = "README.md"
 license = "MIT"
 
 [tool.poetry.dependencies]
-ansible = "2.9.12"
-jinja2 = "^2.11"
-paramiko = "^2.7"
-python = "^3.8"
-pyyaml = "*"
+ansible = "2.10.4"
+jinja2 = "2.11.2"
+paramiko = "2.7.2"
+python = "3.8.3"
+pyyaml = "5.3.1"
 
 [tool.poetry.dev-dependencies]
 bandit = "*"
-black = "19.10b0"
+black = "20.8b1"
 flake8 = "*"
-pre-commit = "^2.7.1"
-pytest = "^6.0.1"
-pytest-cov = "^2.9.0"
-pytest-pycodestyle = "^2.0.0"
-pytest-black = "^0.3.8"
-reorder-python-imports = "^2.3.0"
+pre-commit = "^2.9.3"
+pytest = "^6.2.1"
+pytest-cov = "^2.10.1"
+pytest-pycodestyle = "^2.2.0"
+pytest-black = "^0.3.12"
+reorder-python-imports = "^2.3.6"
 safety = "*"
 
 [build-system]

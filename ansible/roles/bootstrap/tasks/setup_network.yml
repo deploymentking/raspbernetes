@@ -1,5 +1,5 @@
 ---
-- name: Set up networking-related files.
+- name: Set up networking-related files
   template:
     src: "templates/{{ item.template }}"
     dest: "{{ item.dest }}"
