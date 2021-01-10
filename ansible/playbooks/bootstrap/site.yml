@@ -3,7 +3,6 @@
   hosts: raspbernetes_master:raspbernetes_workers
   become: true
   vars_files:
-    - vars/ansible.yml
     - vars/netplan.yml
   pre_tasks:
     - name: 'apt update/upgrade/install/clean'
@@ -11,3 +10,4 @@
   roles:
     - role: bootstrap
     - role: mrlesmithjr.netplan
+    - role: security
