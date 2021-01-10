@@ -3,6 +3,6 @@
   hosts: raspbernetes_master:raspbernetes_workers
   become: true
   vars_files:
-    - vars/ansible.yml
+    - vars/secure.yml
   roles:
     - role: security
