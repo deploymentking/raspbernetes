@@ -32,7 +32,8 @@ the default `ubuntu` user with the password configured during the initial instal
 
 This playbook requires a "double-tap" in which the SSH port is changed from the default value of `22`. It will be
 necessary to amend the SSH port in the playbook vars file to 22 and then reset back to the custom value `2288`. To make
-connecting to the cluster easier, consider adding some SSH settings like below to your config file.
+connecting to the cluster easier, consider adding some SSH settings like below to your config file. The vars files are
+used to make this process easier. When creating a new cluster without any entries in the `~/.ssh/config` file
 
 ```
 Host RASPBERNETES_GROUP

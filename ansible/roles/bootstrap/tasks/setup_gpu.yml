@@ -1,7 +1,7 @@
 ---
 - name: Set the GPU memory level
   lineinfile:
-    path: /boot/firmware/usercfg.txt
+    path: /boot/firmware/config.txt
     regexp: '^gpu_mem=[\d]+$'
     line: 'gpu_mem=16'
     state: present

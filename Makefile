@@ -39,8 +39,8 @@ setup: check_poetry ## Setup virtualenv & dependencies using Poetry
 	python --version
 .PHONY: setup
 
-bootstrap: setup ## Run Ansible against inventory in bootstrap folder
-	cd ./ansible/playbooks/bootstrap/ && ansible-playbook site.yml
+bootstrap: ## Run Ansible against inventory in bootstrap folder (assumes target hosts are brand new Ubuntu installs with correct password for ubuntu user).
+	cd ./ansible/playbooks/bootstrap/ && ansible-playbook site.yml --extra-vars "@vars/secure.yml"
 .PHONY: bootstrap
 
 security: ## Run Ansible against inventory in security folder
@@ -53,10 +53,10 @@ healthcheck: ## Check host health
 	ansible all --args "free -m" --inventory ./ansible/playbooks/bootstrap/inventories/hosts --private-key ~/.ssh/raspbernetes_rsa
 .PHONY: healthcheck
 
-reboot: ## Check host health
+reboot: ## Reboot all hosts in inventory
 	ansible all --module-name shell -a "sleep 1s; shutdown -r now" --become --background 60 --poll 0 --inventory ./ansible/playbooks/bootstrap/inventories/hosts --private-key ~/.ssh/raspbernetes_rsa
 .PHONY: healthcheck
 
-shutdown: ## Check host health
+shutdown: ## Shutdown all hosts in inventory
 	ansible all --module-name shell -a "sleep 1s; shutdown -h now" --become --background 60 --poll 0 --inventory ./ansible/playbooks/bootstrap/inventories/hosts --private-key ~/.ssh/raspbernetes_rsa
 .PHONY: healthcheck
