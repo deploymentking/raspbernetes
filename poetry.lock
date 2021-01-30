@@ -1,17 +1,17 @@
 [[package]]
 name = "ansible"
-version = "2.10.5"
+version = "2.10.6"
 description = "Radically simple IT automation"
 category = "main"
 optional = false
 python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*"
 
 [package.dependencies]
-ansible-base = ">=2.10.4,<2.11"
+ansible-base = ">=2.10.5,<2.11"
 
 [[package]]
 name = "ansible-base"
-version = "2.10.4"
+version = "2.10.5"
 description = "Radically simple IT automation"
 category = "main"
 optional = false
@@ -683,14 +683,14 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 [metadata]
 lock-version = "1.1"
 python-versions = "3.8.3"
-content-hash = "c68d15dadede003da3fc822b92039062531992b4aa93e819af3aedbc0b4680c0"
+content-hash = "1d377521698cff0d2eb531a7100f99a2bf04093d2a38e5fd7eca85a91d32e511"
 
 [metadata.files]
 ansible = [
-    {file = "ansible-2.10.5.tar.gz", hash = "sha256:9775229aae31336a624ca5afe5533fea5e49ef4daa96a96791dd9871b2d8b8d1"},
+    {file = "ansible-2.10.6.tar.gz", hash = "sha256:ae97002e4fb1ed3de947428ff43906c76c66751fe104721cf6b25fa115dbbe8d"},
 ]
 ansible-base = [
-    {file = "ansible-base-2.10.4.tar.gz", hash = "sha256:d4dad569864c08d8efb6ad99acf48ec46d7d118f8ced64f1185f8eac2c280ec3"},
+    {file = "ansible-base-2.10.5.tar.gz", hash = "sha256:33ae323923b841f3d822f355380ce7c92610440362efeed67b4b39db41e555af"},
 ]
 appdirs = [
     {file = "appdirs-1.4.4-py2.py3-none-any.whl", hash = "sha256:a841dacd6b99318a741b166adb07e19ee71a274450e68237b4650ca1055ab128"},
