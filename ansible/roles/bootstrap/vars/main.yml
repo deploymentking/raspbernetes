@@ -19,8 +19,8 @@ dns_nameservers:
   - "1.1.1.1"
   - "1.0.0.1"
 
-mount_device: "/dev/sda1"
-mount_point_dir: "/mnt/sandisk"
+mount_device: "/dev/sdb1"
+mount_point_dir: "/mnt/nvmem2"
 
 swap_file_path: /swapfile
 swap_file_size_mb: "512"
