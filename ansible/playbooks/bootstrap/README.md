@@ -27,7 +27,7 @@ Then run the full playbook, like this:
 
 ### Disk mount information etc
 
-```bash
+```shell
 # View contents of fstab
 cat /etc/fstab
 

@@ -1,0 +1,7 @@
+---
+mount_device_boot: "/dev/sda1"
+mount_device_writable: "/dev/sda2"
+mount_point_dir_boot: "/mnt/boot"
+mount_point_dir_writable: "/mnt/writable"
+
+boot_fix_url: "https://raw.githubusercontent.com/TheRemote/Ubuntu-Server-raspi4-unofficial/master/BootFix.sh"

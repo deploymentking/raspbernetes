@@ -1,0 +1,8 @@
+---
+- name: Set up helper files
+  template:
+    src: "templates/{{ item.template }}"
+    dest: "{{ item.dest }}"
+    mode: 0755
+  with_items:
+    - { template: prepare_ubuntu_usb.sh.j2, dest: "{{ ansible_env.HOME }}/prepare_ubuntu_usb.sh" }
