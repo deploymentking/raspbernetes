@@ -39,6 +39,16 @@ setup: check_poetry ## Setup virtualenv & dependencies using Poetry
 	python --version
 .PHONY: setup
 
+vanilla:
+	cd ./ansible/playbooks/vanilla_pi/ && ansible-playbook site.yml --extra-vars "@vars/unsecure.yml"
+.PHONY: vanilla
+
+vanilla_health: ## Check raspbian OS host health
+	ansible all --args "lsblk" --inventory ./ansible/playbooks/vanilla_pi/inventories/hosts --extra-vars "@./ansible/playbooks/vanilla_pi/vars/unsecure.yml"
+	ansible all --become-user root --args "cat /etc/default/rpi-eeprom-update" --inventory ./ansible/playbooks/vanilla_pi/inventories/hosts --extra-vars "@./ansible/playbooks/vanilla_pi/vars/unsecure.yml"
+	ansible all --become-user root --args "rpi-eeprom-update" --inventory ./ansible/playbooks/vanilla_pi/inventories/hosts --extra-vars "@./ansible/playbooks/vanilla_pi/vars/unsecure.yml"
+.PHONY: vanilla_health
+
 bootstrap: ## Run Ansible against inventory in bootstrap folder (assumes target hosts are brand new Ubuntu installs with correct password for ubuntu user).
 	cd ./ansible/playbooks/bootstrap/ && ansible-playbook site.yml --extra-vars "@vars/secure.yml"
 .PHONY: bootstrap

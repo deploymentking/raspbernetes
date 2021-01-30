@@ -1,0 +1,11 @@
+---
+- name: Setup Raspbian OS
+  hosts: raspbernetes_master:raspbernetes_workers
+  vars_files:
+    - vars/unsecure.yml
+  pre_tasks:
+    - name: 'apt update/upgrade/install/clean'
+      become: true
+      raw: apt update && apt upgrade -y && apt install -y git sshpass net-tools && apt autoremove -y
+  roles:
+    - role: vanilla

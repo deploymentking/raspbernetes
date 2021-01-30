@@ -1,0 +1,12 @@
+#!/bin/bash
+
+lsblk
+sudo mkdir -p {{ mount_point_dir_boot }}
+sudo mkdir -p {{ mount_point_dir_writable }}
+sudo mount {{ mount_device_boot }} {{ mount_point_dir_boot }}
+sudo mount {{ mount_device_writable }} {{ mount_point_dir_writable }}
+lsblk
+sudo curl {{ boot_fix_url }} | sudo bash
+sudo umount {{ mount_point_dir_boot }}
+sudo umount {{ mount_point_dir_writable }}
+sudo rm -rfv {{ mount_point_dir_boot }} {{ mount_point_dir_writable }}
