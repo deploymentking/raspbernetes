@@ -6,3 +6,4 @@
     mode: 0755
   with_items:
     - { template: prepare_ubuntu_usb.sh.j2, dest: "{{ ansible_env.HOME }}/prepare_ubuntu_usb.sh" }
+  when: ansible_distribution == 'Debian' and ansible_lsb.id == 'Raspbian'

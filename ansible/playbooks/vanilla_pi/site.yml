@@ -2,7 +2,7 @@
 - name: Setup Raspbian OS
   hosts: raspbernetes_master:raspbernetes_workers
   vars_files:
-    - vars/unsecure.yml
+    - vars/ansible.yml
   pre_tasks:
     - name: 'apt update/upgrade/install/clean'
       become: true

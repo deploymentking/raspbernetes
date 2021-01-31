@@ -40,7 +40,7 @@ setup: check_poetry ## Setup virtualenv & dependencies using Poetry
 .PHONY: setup
 
 vanilla:
-	cd ./ansible/playbooks/vanilla_pi/ && ansible-playbook site.yml --extra-vars "@vars/unsecure.yml"
+	cd ./ansible/playbooks/vanilla_pi/ && ansible-playbook site.yml
 .PHONY: vanilla
 
 vanilla_health: ## Check raspbian OS host health
