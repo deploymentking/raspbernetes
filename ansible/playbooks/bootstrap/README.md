@@ -15,13 +15,12 @@
 
 ## Run playbook
 
-To install the playbook dependencies, run the following command
+Assuming you are in the root of the project, install the playbook dependencies and run the playbook by running the
+following command:
 
-`ansible-galaxy install -r requirements.yml`
-
-Then run the full playbook, like this:
-
-`ansible-playbook -i inventories/hosts site.yml`
+```shell
+make bootstrap
+```
 
 ## Useful scripts
 

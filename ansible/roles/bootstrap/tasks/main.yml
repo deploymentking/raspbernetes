@@ -8,17 +8,25 @@
     r10s_hostname: "{{ mac_address_mapping[r10s_mac_address].name }}"
     r10s_ip_address: "{{ mac_address_mapping[r10s_mac_address].ip }}"
 
-- name: Setup Network
+- name: Setup network
   include: setup_network.yml
-
-- name: Setup USB
-  include: setup_usb.yml
 
 - name: Setup swap file
   include: setup_swap.yml
 
-- name: Setup GPU memory
-  include: setup_gpu.yml
+- name: Setup boot config
+  include: setup_boot_config.yml
 
 - name: Setup cgroup
   include: setup_cgroup.yml
+
+# This is commented out for now until I am no longer using the SanDisk USB as host OS disk
+#- name: Setup USB
+#  include: setup_usb.yml
+#
+# These have both been replaced by the boot config task above
+#- name: Setup GPU memory
+#  include: setup_gpu.yml
+#
+#- name: Setup PoE Settings
+#  include: setup_poe.yml
