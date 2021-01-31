@@ -20,9 +20,6 @@ The following is a list of the components from which the cluster is composed.
   * [Components 4](#components-4)
 - [Phase 5 - PoE (SanDisk drives; noisy fans!)](#phase-5---poe-sandisk-drives-noisy-fans)
 - [Phase 6 - Future plans (NVMe.M2 drives)](#phase-6---future-plans-nvmem2-drives)
-- [References](#references)
-  * [Setting up USB as a bootable operating system](#setting-up-usb-as-a-bootable-operating-system)
-  * [Raspberry Pi Settings](#raspberry-pi-settings)
 
 <!-- tocstop -->
 
@@ -107,18 +104,3 @@ up and shut down settings using the `config.txt`; this will be achieved via Ansi
 ## Phase 6 - Future plans (NVMe.M2 drives)
 
 The dream of using the NVMe.M2 drives is not over, I just need to figure out their power supply issues
-
-## References
-
-### Setting up USB as a bootable operating system
-* [New Raspberry Pi 4 Bootloader USB Boot Guide](https://jamesachambers.com/new-raspberry-pi-4-bootloader-usb-network-boot-guide/)
-* [Raspberry Pi 4 Ubuntu 20.10 USB Mass Storage Boot Guide](https://jamesachambers.com/raspberry-pi-4-ubuntu-20-04-usb-mass-storage-boot-guide/)
-* [Official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/msd.md)
-* [Another great article](https://www.zdnet.com/article/booting-my-raspberry-pi-4-from-a-usb-device/)
-* [Raspberry Pi USB support documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/usb/README.md#support)
-
-### Raspberry Pi Settings
-* [Bootloader](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711_bootloader_config.md)
-* [booteeprom](https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
-* [config.txt (memory)](https://www.raspberrypi.org/documentation/configuration/config-txt/memory.md)
-* [Fan control](https://jjj.blog/2020/02/raspberry-pi-poe-hat-fan-control/)
