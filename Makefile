@@ -39,6 +39,10 @@ setup: check_poetry ## Setup virtualenv & dependencies using Poetry
 	python --version
 .PHONY: setup
 
+debug:
+	cd ./ansible/playbooks/debug/ && ansible-playbook site.yml --extra-vars "@vars/ubuntu_unsecure.yml"
+.PHONY: debug
+
 vanilla:
 	cd ./ansible/playbooks/vanilla_pi/ && ansible-playbook site.yml
 .PHONY: vanilla

@@ -1,0 +1,6 @@
+---
+- name: Debug the cluster
+  hosts: raspbernetes_master:raspbernetes_workers
+  become: true
+  roles:
+    - role: debug
