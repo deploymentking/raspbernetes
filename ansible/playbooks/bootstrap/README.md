@@ -69,3 +69,5 @@ umount -l /dev/sda1
 * [booteeprom](https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
 * [config.txt (memory)](https://www.raspberrypi.org/documentation/configuration/config-txt/memory.md)
 * [Fan control](https://jjj.blog/2020/02/raspberry-pi-poe-hat-fan-control/)
+* [Fan control GitHub Issue](https://github.com/raspberrypi/linux/issues/2715)
+* [Firmware Overlays](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README)
