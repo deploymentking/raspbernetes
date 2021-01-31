@@ -7,7 +7,7 @@
     - vars/secure.yml
   pre_tasks:
     - name: 'apt update/upgrade/install/clean'
-      raw: apt-get update && apt-get -y upgrade && apt-get -y install git sshpass net-tools && apt -y autoremove
+      raw: apt update && apt upgrade -y && apt install -y git sshpass net-tools libraspberrypi-bin && apt autoremove -y
   roles:
     - role: bootstrap
     - role: mrlesmithjr.netplan
