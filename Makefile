@@ -39,18 +39,23 @@ setup: check_poetry ## Setup virtualenv & dependencies using Poetry
 	python --version
 .PHONY: setup
 
+debug:
+	cd ./ansible/playbooks/debug/ && ansible-playbook site.yml --extra-vars "@vars/ubuntu_unsecure.yml"
+.PHONY: debug
+
 vanilla:
-	cd ./ansible/playbooks/vanilla_pi/ && ansible-playbook site.yml --extra-vars "@vars/unsecure.yml"
+	cd ./ansible/playbooks/vanilla_pi/ && ansible-playbook site.yml
 .PHONY: vanilla
 
-vanilla_health: ## Check raspbian OS host health
-	ansible all --args "lsblk" --inventory ./ansible/playbooks/vanilla_pi/inventories/hosts --extra-vars "@./ansible/playbooks/vanilla_pi/vars/unsecure.yml"
-	ansible all --become-user root --args "cat /etc/default/rpi-eeprom-update" --inventory ./ansible/playbooks/vanilla_pi/inventories/hosts --extra-vars "@./ansible/playbooks/vanilla_pi/vars/unsecure.yml"
-	ansible all --become-user root --args "rpi-eeprom-update" --inventory ./ansible/playbooks/vanilla_pi/inventories/hosts --extra-vars "@./ansible/playbooks/vanilla_pi/vars/unsecure.yml"
+vanilla_health: ## Check raspbian OS host health (won't work on Ubuntu)
+	ansible all --args "lsblk" --inventory ./ansible/playbooks/vanilla_pi/inventories/hosts
+	ansible all --become-user root --args "cat /etc/default/rpi-eeprom-update" --inventory ./ansible/playbooks/vanilla_pi/inventories/hosts
+	ansible all --become-user root --args "rpi-eeprom-update" --inventory ./ansible/playbooks/vanilla_pi/inventories/hosts
 .PHONY: vanilla_health
 
 bootstrap: ## Run Ansible against inventory in bootstrap folder (assumes target hosts are brand new Ubuntu installs with correct password for ubuntu user).
-	cd ./ansible/playbooks/bootstrap/ && ansible-playbook site.yml --extra-vars "@vars/secure.yml"
+	cd ./ansible/playbooks/bootstrap/ && ansible-galaxy install -r requirements.yml
+	cd ./ansible/playbooks/bootstrap/ && ansible-playbook site.yml
 .PHONY: bootstrap
 
 security: ## Run Ansible against inventory in security folder

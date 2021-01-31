@@ -10,18 +10,19 @@
 - [References](#references)
   * [fstab settings](#fstab-settings)
   * [Swap settings](#swap-settings)
+  * [Setting up USB as a bootable operating system](#setting-up-usb-as-a-bootable-operating-system)
+  * [Raspberry Pi Settings](#raspberry-pi-settings)
 
 <!-- tocstop -->
 
 ## Run playbook
 
-To install the playbook dependencies, run the following command
+Assuming you are in the root of the project, install the playbook dependencies and run the playbook by running the
+following command:
 
-`ansible-galaxy install -r requirements.yml`
-
-Then run the full playbook, like this:
-
-`ansible-playbook -i inventories/hosts site.yml`
+```shell
+make bootstrap
+```
 
 ## Useful scripts
 
@@ -55,3 +56,18 @@ umount -l /dev/sda1
 * [Jeff Geerling](https://github.com/geerlingguy/ansible-role-swap/blob/master/tasks/enable.yml)
 * [Roberto Rojas](https://github.com/robertojrojas/kubernetes-the-hard-way-raspberry-pi/blob/master/docs/01-infrastructure.md#swap-optional)
 * [Enable swap on Ubuntu](https://tecadmin.net/enable-swap-on-ubuntu/)
+
+### Setting up USB as a bootable operating system
+* [New Raspberry Pi 4 Bootloader USB Boot Guide](https://jamesachambers.com/new-raspberry-pi-4-bootloader-usb-network-boot-guide/)
+* [Raspberry Pi 4 Ubuntu 20.10 USB Mass Storage Boot Guide](https://jamesachambers.com/raspberry-pi-4-ubuntu-20-04-usb-mass-storage-boot-guide/)
+* [Official documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/msd.md)
+* [Another great article](https://www.zdnet.com/article/booting-my-raspberry-pi-4-from-a-usb-device/)
+* [Raspberry Pi USB support documentation](https://www.raspberrypi.org/documentation/hardware/raspberrypi/usb/README.md#support)
+
+### Raspberry Pi Settings
+* [Bootloader](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711_bootloader_config.md)
+* [booteeprom](https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
+* [config.txt (memory)](https://www.raspberrypi.org/documentation/configuration/config-txt/memory.md)
+* [Fan control](https://jjj.blog/2020/02/raspberry-pi-poe-hat-fan-control/)
+* [Fan control GitHub Issue](https://github.com/raspberrypi/linux/issues/2715)
+* [Firmware Overlays](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README)
