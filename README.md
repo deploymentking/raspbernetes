@@ -19,9 +19,9 @@ Management for bare metal Raspberry Pi cluster running k8s.
 
 ## Order of play
 
-There is a combination of manual setup and automated setup as the entire process cannot be automated completely. This is
-because once we have secured the cluster the SSH port and user change, which means you cannot run the bootstrap once the
-cluster has been secured.
+There is a combination of manual setup and automated setup as the entire process cannot be automated completely. Firstly,
+it is necessary to prep the Raspberry Pi nodes and prepare the Ubuntu USB drives. Additionally, depending on whether the
+`security` role has run, the `site.yml` file may need to use either the `secure.yml` or `unsecure.yml` vars file.
 
 The running order is as follows:
 * Construct the cluster using Raspbian OS installed onto SD cards, ensure all the nodes are networked and accessible

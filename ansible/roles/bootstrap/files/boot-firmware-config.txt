@@ -31,10 +31,10 @@ arm_64bit=1
 device_tree_address=0x03000000
 # PoE Hat Fan Speeds
 dtoverlay=rpi-poe
-dtparam=poe_fan_temp0=65000
-dtparam=poe_fan_temp1=70000
-dtparam=poe_fan_temp2=75000
-dtparam=poe_fan_temp3=80000
+dtparam=poe_fan_temp0=70000,poe_fan_temp0_hyst=2000
+dtparam=poe_fan_temp1=75000,poe_fan_temp1_hyst=5000
+dtparam=poe_fan_temp2=80000,poe_fan_temp2_hyst=5000
+dtparam=poe_fan_temp3=82000,poe_fan_temp3_hyst=2000
 
 # The following settings are defaults expected to be overridden by the
 # included configuration. The only reason they are included is, again, to
