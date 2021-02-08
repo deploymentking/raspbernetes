@@ -22,7 +22,7 @@ pytest = "^6.2.2"
 pytest-cov = "^2.11.1"
 pytest-pycodestyle = "^2.2.0"
 pytest-black = "^0.3.12"
-reorder-python-imports = "^2.3.6"
+reorder-python-imports = "^2.4.0"
 safety = "*"
 
 [build-system]
