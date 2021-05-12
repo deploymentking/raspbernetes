@@ -7,7 +7,7 @@ readme = "README.md"
 license = "MIT"
 
 [tool.poetry.dependencies]
-ansible = "2.10.6"
+ansible = "3.4.0"
 jinja2 = "2.11.3"
 paramiko = "2.7.2"
 python = "3.8.3"
