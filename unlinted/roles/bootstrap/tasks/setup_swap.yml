@@ -1,0 +1,11 @@
+---
+- name: Install dphys-swapfile
+  package:
+    name: dphys-swapfile
+    state: present
+
+- name: Disable swap
+  ansible.builtin.shell: >
+    dphys-swapfile swapoff &&
+    dphys-swapfile uninstall &&
+    update-rc.d -f dphys-swapfile remove

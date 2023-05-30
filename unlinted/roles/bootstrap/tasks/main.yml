@@ -1,0 +1,32 @@
+---
+- name: Set the current MAC address for eth0
+  ansible.builtin.set_fact:
+    r10s_mac_address: "{{ hostvars[inventory_hostname].ansible_default_ipv4.macaddress }}"
+
+- name: Set variables based on eth0 MAC address
+  ansible.builtin.set_fact:
+    r10s_hostname: "{{ mac_address_mapping[r10s_mac_address].name }}"
+    r10s_ip_address: "{{ mac_address_mapping[r10s_mac_address].ip }}"
+
+- name: Setup network
+  ansible.builtin.import_tasks: setup_network.yml
+
+- name: Setup swap file
+  ansible.builtin.import_tasks: setup_swap.yml
+
+- name: Setup boot config
+  ansible.builtin.import_tasks: setup_boot_config.yml
+
+- name: Setup cgroup
+  ansible.builtin.import_tasks: setup_cgroup.yml
+
+# # This is commented out for now until I am no longer using the SanDisk USB as host OS disk
+# - name: Setup USB
+#   ansible.builtin.include: setup_usb.yml
+#
+# # These have both been replaced by the boot config task above
+# - name: Setup GPU memory
+#   ansible.builtin.include: setup_gpu.yml
+#
+# - name: Setup PoE Settings
+#   ansible.builtin.include: setup_poe.yml

@@ -1,0 +1,12 @@
+---
+- name: Update hostname
+  ansible.builtin.hostname:
+    name: r10s_hostname
+
+- name: Delete DHCP leases
+  ansible.builtin.file:
+    path: /var/lib/dhcp/dhclient.leases
+    state: absent
+  with_items:
+    - /var/lib/dhcp/dhclient.leases
+    - /var/lib/dhcpcd5/dhcpcd-eth0.lease

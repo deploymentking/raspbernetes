@@ -1,0 +1,21 @@
+---
+- name: Copy the boot configuration file
+  ansible.builtin.copy:
+    src: files/boot-firmware-config.txt
+    dest: /boot/firmware/config.txt
+    mode: 0755
+  register: boot_config_features
+
+- name: Reboot immediately if boot config is changed
+  ansible.builtin.shell: "sleep 5 && reboot"
+  async: 1
+  poll: 0
+  when: boot_config_features is changed
+
+- name: Wait for the reboot to complete if boot config is changed
+  ansible.builtin.wait_for_connection:
+    connect_timeout: 20
+    sleep: 5
+    delay: 5
+    timeout: 300
+  when: boot_config_features is changed

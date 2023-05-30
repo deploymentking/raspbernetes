@@ -1,0 +1,6 @@
+---
+- name: Add new users
+  user:
+    name: "{{ item }}"
+    ansible.builtin.shell: /bin/bash
+  with_items: "{{ security_users }}"
