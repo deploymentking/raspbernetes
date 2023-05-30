@@ -1,0 +1,30 @@
+---
+- name: Set PoE Hat fan low speed trigger
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/config.txt
+    regexp: '^dtparam=poe_fan_temp0$'
+    line: 'dtparam=poe_fan_temp0=65000,poe_fan_temp0_hyst=5000'
+    state: present
+  register: poe_features
+
+- name: Set PoE Hat fan high speed trigger
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/config.txt
+    regexp: '^dtparam=poe_fan_temp1$'
+    line: 'dtparam=poe_fan_temp1=67000,poe_fan_temp1_hyst=2000'
+    state: present
+  register: poe_features
+
+- name: Reboot immediately if fan speed is changed
+  ansible.builtin.shell: "sleep 5 && reboot"
+  async: 1
+  poll: 0
+  when: poe_features is changed
+
+- name: Wait for the reboot to complete if fan speed is changed
+  ansible.builtin.wait_for_connection:
+    connect_timeout: 20
+    sleep: 5
+    delay: 5
+    timeout: 300
+  when: poe_features is changed

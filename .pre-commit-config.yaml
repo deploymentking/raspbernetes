@@ -1,17 +1,42 @@
 repos:
-  - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v3.1.0  # Use the ref you want to point at
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
     hooks:
       - id: no-commit-to-branch
+        args: [--branch, develop, --branch, main]
+        name: Don't commit to main branch
       - id: check-case-conflict
+        name: Check for case conflicts
       - id: check-merge-conflict
+        name: Check for merge conflicts
+      - id: check-symlinks
+        name: Check for broken symlinks
+        exclude: unlinted
+      - id: check-json
+        name: Check for valid JSON
       - id: check-yaml
         args: [--unsafe]
+        name: Check for valid YAML
       - id: detect-private-key
+        name: Check for private keys
       - id: trailing-whitespace
+        name: Fix trailing whitespaces
       - id: end-of-file-fixer
+        name: Fix missing end-of-file line returns
   - repo: https://github.com/ansible/ansible-lint.git
-    rev: v4.2.0
+    rev: v6.16.2
     hooks:
       - id: ansible-lint
-        files: \.(yaml|yml)$
+        name: Run ansible-lint
+  - repo: https://github.com/python/black
+    rev: 23.3.0
+    hooks:
+      - id: black
+        name: Run Black
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.5
+    hooks:
+      - id: bandit
+        name: Run Bandit
+        args: [-ll, -s, B605]
+        language_version: python3

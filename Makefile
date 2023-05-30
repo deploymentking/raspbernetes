@@ -40,11 +40,11 @@ setup: check_poetry ## Setup virtualenv & dependencies using Poetry
 .PHONY: setup
 
 debug:
-	cd ./ansible/playbooks/debug/ && ansible-playbook site.yml --extra-vars "@vars/ubuntu_unsecure.yml"
+	ansible-playbook ./playbooks/debug/site.yml --extra-vars "@./playbooks/debug/vars/ubuntu_unsecure.yml"
 .PHONY: debug
 
 vanilla:
-	cd ./ansible/playbooks/vanilla_pi/ && ansible-playbook site.yml
+	cd ./playbooks/vanilla_pi/ && ansible-playbook site.yml
 .PHONY: vanilla
 
 vanilla_health: ## Check raspbian OS host health (won't work on Ubuntu)
@@ -54,12 +54,12 @@ vanilla_health: ## Check raspbian OS host health (won't work on Ubuntu)
 .PHONY: vanilla_health
 
 bootstrap: ## Run Ansible against inventory in bootstrap folder (assumes target hosts are brand new Ubuntu installs with correct password for ubuntu user).
-	cd ./ansible/playbooks/bootstrap/ && ansible-galaxy install -r requirements.yml
-	cd ./ansible/playbooks/bootstrap/ && ansible-playbook site.yml
+	cd ./playbooks/bootstrap/ && ansible-galaxy install -r requirements.yml
+	cd ./playbooks/bootstrap/ && ansible-playbook site.yml
 .PHONY: bootstrap
 
 security: ## Run Ansible against inventory in security folder
-	cd ./ansible/playbooks/security/ && ansible-playbook site.yml
+	cd ./playbooks/security/ && ansible-playbook site.yml
 .PHONY: security
 
 healthcheck: ## Check host health

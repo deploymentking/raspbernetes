@@ -1,0 +1,11 @@
+---
+- name: "List all known variables and facts"
+  ansible.builtin.debug:
+    var: hostvars[inventory_hostname]
+  when: full_debug
+
+- name: "Print specific variables"
+  ansible.builtin.debug:
+    msg:
+      - The ansible_distribution is {{ ansible_distribution }}
+      - The ansible_lsb.id is {{ ansible_lsb.id }}
