@@ -1,0 +1,28 @@
+---
+- name: Get device name
+  ansible.builtin.set_fact:
+    device_name: "{{ ansible_devices.sda.model }}"
+
+- name: Show only device name
+  ansible.builtin.debug: var=device_name
+
+- name: Create a ext4 filesystem on device
+  filesystem:
+    fstype: ext4
+    dev: "{{ mount_device }}"
+    force: true
+    resizefs: true
+
+- name: Create a mount point directory
+  ansible.builtin.file:
+    path: "{{ mount_point_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Mount USB device
+  ansible.posix.mount:
+    path: "{{ mount_point_dir }}"
+    src: "{{ mount_device }}"
+    fstype: ext4
+    state: mounted
+    backup: true

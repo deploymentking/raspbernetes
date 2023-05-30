@@ -1,0 +1,22 @@
+---
+- name: Set the GPU memory level
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/config.txt
+    regexp: '^gpu_mem=[\d]+$'
+    line: 'gpu_mem=16'
+    state: present
+  register: gpu_features
+
+- name: Reboot immediately if GPU memory is changed
+  ansible.builtin.shell: "sleep 5 && reboot"
+  async: 1
+  poll: 0
+  when: gpu_features is changed
+
+- name: Wait for the reboot to complete if GPU memory is changed
+  ansible.builtin.wait_for_connection:
+    connect_timeout: 20
+    sleep: 5
+    delay: 5
+    timeout: 300
+  when: gpu_features is changed

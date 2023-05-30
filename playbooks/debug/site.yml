@@ -1,0 +1,6 @@
+---
+- name: Debug the cluster
+  hosts: raspbernetes_server_tp2:raspbernetes_agents_tp2:raspbernetes_agents_rpi4b
+  become: true
+  roles:
+    - role: 'debug'

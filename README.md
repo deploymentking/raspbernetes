@@ -43,13 +43,13 @@ The following bill of materials shows all the different components I used to put
 Now it is possible to boot a Raspberry Pi from a USB drive, follow the instructions below to install the Ubuntu
 operating system onto the USB disks and prepare the Pi to boot onto that USB.
 
-* [Preparation instructions](./ansible/playbooks/vanilla_pi/README.md)
+* [Preparation instructions](unlinted/playbooks/vanilla_pi/README.md)
 
 ## Bootstrap the cluster
 
 Follow the instructions below to bootstrap a cluster using Ansible. The high level order
 
-* [Bootstrap instructions](./ansible/playbooks/bootstrap/README.md)
+* [Bootstrap instructions](unlinted/playbooks/bootstrap/README.md)
 
 ## Secure the cluster
 
@@ -66,4 +66,4 @@ Host RASPBERNETES_GROUP
     IdentityFile /Users/username/.ssh/raspbernetes_rsa
 ```
 
-* [Security instructions](./ansible/playbooks/security/README.md)
+* [Security instructions](unlinted/playbooks/security/README.md)
