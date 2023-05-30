@@ -661,8 +661,8 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.3)", "coverage-enable-subprocess
 
 [metadata]
 lock-version = "1.1"
-python-versions = "3.9.2"
-content-hash = "8f6757a4d8c1c5a294731dfc34ef2257b9ae20f1345f25c1c1231aa89107772c"
+python-versions = "3.9.16"
+content-hash = "06b73d40eb88cf0ee06cbf156cf14dec0f45190a0e908e82048d87e30287d813"
 
 [metadata.files]
 ansible = [
