@@ -5,4 +5,7 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
-  ignore: []
+  ignore:
+  - dependency-name: pre-commit
+    versions:
+    - 2.12.0
